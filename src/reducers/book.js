@@ -1,15 +1,18 @@
 const books = [
   {
     id: 1,
-    title: 'book 1',
+    title: 'El Zorro Fuerte',
+    category: 'Action',
   },
   {
     id: 2,
-    title: 'book 2',
+    title: 'Stephen King Book',
+    category: 'Horror',
   },
   {
     id: 3,
-    title: 'book 3',
+    title: 'Turkish history for dummies',
+    category: 'History',
   }
 ];
 

@@ -18,21 +18,35 @@ class BookForm extends React.Component {
     category: '',
   }
 
-  submitBook = () => {
-    const book = { title: 'hello' };
+  submitBook = (event) => {
+    event.preventDefault();
+    const book = this.state;
     this.props.addBook(book);
+    this.setState({
+      title: '',
+    })
   }
 
   handleChange = (event) => {
-    console.log(event.target.constructor);
-    this.setState({ title: event.target.value });
+    switch (event.target.tagName) {
+      case 'INPUT':
+      this.setState({ title: event.target.value });
+      break;
+      case 'SELECT':
+      this.setState({ category: event.target.value });
+      break;
+      default:
+    }
   }
 
   render() {
     return (
       <div>
         <input value={this.state.title} onChange={this.handleChange} />
-        <input value={this.state.category} onChange={this.handleChange} />
+        <select onChange={this.handleChange}>
+          <option value='' disabled selected>Choose category</option>
+          {categories.map((category) => <option key={category} value={category}>{category}</option>)}
+        </select>
         <button onClick={this.submitBook}>Add Book</button>
       </div>
     );
@@ -40,7 +54,7 @@ class BookForm extends React.Component {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return { addBook };
+  return { addBook: (book) => dispatch(addBook(book)) };
 }
 
-export default connect(mapDispatchToProps)(BookForm);
+export default connect(null, mapDispatchToProps)(BookForm);

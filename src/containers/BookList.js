@@ -9,12 +9,12 @@ const BookList = ({ books }) => {
         <tr>
           <th>ID</th>
           <th>TITLE</th>
+          <th>CATEGORY</th>
         </tr>
       </thead>
-        { console.log(books)}
       <tbody>
         { books.map((book) =>
-          <Book id={book.id} title={book.title} />
+          <Book key={book.id} id={book.id} title={book.title} category={book.category} />
         )}
       </tbody>
     </table>
