@@ -13,7 +13,7 @@ const books = [
     id: 3,
     title: 'Turkish history for dummies',
     category: 'History',
-  }
+  },
 ];
 
 let id = 4;
@@ -25,7 +25,7 @@ export default (state = books, action) => {
       book.id = id++;
       return [...state, book];
     case 'REMOVE_BOOK':
-      return state.filter((book) => book.id !== action.id);
+      return state.filter(book => book.id !== action.id);
     default:
       return state;
   }
