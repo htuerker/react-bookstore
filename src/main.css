@@ -126,11 +126,11 @@ body {
 .book .right div:first-child {
   border-right: 2px solid rgb(232, 232, 232);
   padding-right: 60px;
-  margin-right: 60px;
+  width: 100px;
 }
 
 .book .right div:last-child {
-  margin-right: 60px;
+  margin: 0 100px;
 }
 
 /* BOOK FORM */

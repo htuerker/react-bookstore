@@ -7,7 +7,7 @@ import { removeBook } from '../actions';
 import { getBooks } from '../reducers/book';
 
 const BookList = ({ books, removeBook }) => (
-  <div className='book-list'>
+  <div className="book-list">
     <CategoryFilter />
     <table>
       <tbody>
@@ -17,6 +17,7 @@ const BookList = ({ books, removeBook }) => (
             id={book.id}
             title={book.title}
             category={book.category}
+            percentage={book.percentage}
             removeBook={removeBook}
           />
         ))}
