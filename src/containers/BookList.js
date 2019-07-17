@@ -26,15 +26,6 @@ const BookList = ({ books, removeBook }) => (
   </table>
 );
 
-const mapStateToProps = (state) => {
-  return { books: state.books };
-};
+const mapStateToProps = (state) => ({ books: state.books });
 
-const mapDispatchToProps = (dispatch) => {
-  return { removeBook: id => dispatch(removeBook(id)) };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(BookList);
+export default connect(mapStateToProps, { removeBook })(BookList);

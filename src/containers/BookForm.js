@@ -43,8 +43,8 @@ class BookForm extends React.Component {
     return (
       <div>
         <input value={this.state.title} onChange={this.handleChange} />
-        <select onChange={this.handleChange}>
-          <option value='' disabled selected>Choose category</option>
+        <select onChange={this.handleChange} value={this.state.category}>
+          <option value='' disabled>Choose category</option>
           {categories.map((category) => <option key={category} value={category}>{category}</option>)}
         </select>
         <button onClick={this.submitBook}>Add Book</button>
@@ -53,8 +53,4 @@ class BookForm extends React.Component {
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return { addBook: (book) => dispatch(addBook(book)) };
-}
-
-export default connect(null, mapDispatchToProps)(BookForm);
+export default connect(null, { addBook })(BookForm);

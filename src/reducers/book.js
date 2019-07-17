@@ -1,4 +1,4 @@
-const books = [
+const mock = [
   {
     id: 1,
     title: 'El Zorro Fuerte',
@@ -11,19 +11,25 @@ const books = [
   },
   {
     id: 3,
-    title: 'Turkish history for dummies',
+    title: 'Turkish History',
+    category: 'History',
+  },
+  {
+    id: 4,
+    title: 'The Pink Chicken',
+    category: 'Kids',
+  },
+  {
+    id: 5,
+    title: 'Napoleon',
     category: 'History',
   },
 ];
 
-let id = 4;
-
-export default (state = books, action) => {
+export default (state = mock, action) => {
   switch (action.type) {
     case 'ADD_BOOK':
-      const book = action.book;
-      book.id = id++;
-      return [...state, book];
+      return [...state, action.book];
     case 'REMOVE_BOOK':
       return state.filter(book => book.id !== action.id);
     default:

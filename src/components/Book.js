@@ -12,7 +12,7 @@ const Book = ({ id, title, category, removeBook }) => (
 
 Book.propTypes = {
   id: PropTypes.number.isRequired,
-  title: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   removeBook: PropTypes.func.isRequired,
 };
