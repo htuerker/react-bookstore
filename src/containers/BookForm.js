@@ -1,16 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addBook } from '../actions';
-
-const categories = [
-  'Action',
-  'Biography',
-  'History',
-  'Horror',
-  'Kids',
-  'Learning',
-  'Sci-Fi',
-];
+import { categories } from '../constants';
 
 class BookForm extends React.Component {
   state = {
