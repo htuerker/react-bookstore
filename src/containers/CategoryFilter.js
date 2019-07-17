@@ -1,17 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { categories } from '../constants';
+import { filters } from '../constants';
 import { changeFilter } from '../actions';
 
 const CategoryFilter = ({ current, changeFilter }) => (
-  <select value={current} onChange={changeFilter}>
-    <option value='All' disabled>All</option>
-    {categories.map((category) => <option key={category} value={category}>{category}</option>)}
+  <select value={current} onChange={event => changeFilter(event.target.value)}>
+    {filters.map(filter => <option key={filter} value={filter}>{filter}</option>)}
   </select>
-)
+);
 
-const mapStateToProps = (state) => ({ current: state.filter});
+CategoryFilter.propTypes = {
+  current: PropTypes.string.isRequired,
+  changeFilter: PropTypes.func.isRequired,
+};
 
-const mapDispatchToProps = (dispatch) => ({ changeFilter: (filter) => dispatch(changeFilter(filter)) });
+const mapStateToProps = state => ({ current: state.filter });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryFilter);
+export default connect(mapStateToProps, { changeFilter })(CategoryFilter);

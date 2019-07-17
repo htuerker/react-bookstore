@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Book from '../components/Book';
 import CategoryFilter from './CategoryFilter';
-import { getBooks, removeBook } from '../actions';
+import { removeBook } from '../actions';
+import { getBooks } from '../reducers/book';
 
 const BookList = ({ books, removeBook }) => (
   <div>
@@ -16,7 +18,7 @@ const BookList = ({ books, removeBook }) => (
         </tr>
       </thead>
       <tbody>
-        {books.map((book) => (
+        {books.map(book => (
           <Book
             key={book.id}
             id={book.id}
@@ -30,6 +32,15 @@ const BookList = ({ books, removeBook }) => (
   </div>
 );
 
-const mapStateToProps = (state) => ({ books: getBooks(state.books, state.filter) });
+BookList.propTypes = {
+  books: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+  })).isRequired,
+  removeBook: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => ({ books: getBooks(state.books, state.filter) });
 
 export default connect(mapStateToProps, { removeBook })(BookList);

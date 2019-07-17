@@ -1,3 +1,5 @@
+import uuid from 'uuid';
+
 export const categories = [
   'Action',
   'Biography',
@@ -8,29 +10,31 @@ export const categories = [
   'Sci-Fi',
 ];
 
+export const filters = ['All', ...categories];
+
 export const mockBooks = [
   {
-    id: 1,
+    id: uuid(),
     title: 'El Zorro Fuerte',
     category: 'Action',
   },
   {
-    id: 2,
+    id: uuid(),
     title: 'Stephen King Book',
     category: 'Horror',
   },
   {
-    id: 3,
+    id: uuid(),
     title: 'Turkish History',
     category: 'History',
   },
   {
-    id: 4,
+    id: uuid(),
     title: 'The Pink Chicken',
     category: 'Kids',
   },
   {
-    id: 5,
+    id: uuid(),
     title: 'Napoleon',
     category: 'History',
   },
