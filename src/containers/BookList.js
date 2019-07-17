@@ -7,16 +7,9 @@ import { removeBook } from '../actions';
 import { getBooks } from '../reducers/book';
 
 const BookList = ({ books, removeBook }) => (
-  <div>
+  <div className='book-list'>
     <CategoryFilter />
     <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>TITLE</th>
-          <th>CATEGORY</th>
-        </tr>
-      </thead>
       <tbody>
         {books.map(book => (
           <Book
