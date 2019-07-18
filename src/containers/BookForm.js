@@ -18,25 +18,17 @@ class BookForm extends React.Component {
     })
   }
 
-  handleChange = (event) => {
-    switch (event.target.tagName) {
-      case 'INPUT':
-        this.setState({ title: event.target.value });
-        break;
-      case 'SELECT':
-        this.setState({ category: event.target.value });
-        break;
-      default:
-    }
-  }
+  handleChange = event => this.setState({
+    [event.target.name]: event.target.value,
+  })
 
   render() {
     return (
       <div className='book-form'>
         <h1>ADD NEW BOOK</h1>
         <div>
-          <input value={this.state.title} onChange={this.handleChange} placeholder='Book title' />
-          <select onChange={this.handleChange} value={this.state.category} >
+          <input name='title' value={this.state.title} onChange={this.handleChange} placeholder='Book title' />
+          <select name='category' onChange={this.handleChange} value={this.state.category} >
             <option value='' disabled>Category</option>
             {categories.map((category) => <option key={category} value={category}>{category}</option>)}
           </select>

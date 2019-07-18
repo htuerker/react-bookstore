@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Book from '../components/Book';
 import CategoryFilter from './CategoryFilter';
 import { removeBook } from '../actions';
-import { getBooks } from '../reducers/book';
+import { getBooks } from '../helpers';
 
 const BookList = ({ books, removeBook }) => (
   <div className="book-list">
