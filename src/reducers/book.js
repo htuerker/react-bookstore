@@ -1,32 +1,6 @@
-const mock = [
-  {
-    id: 1,
-    title: 'El Zorro Fuerte',
-    category: 'Action',
-  },
-  {
-    id: 2,
-    title: 'Stephen King Book',
-    category: 'Horror',
-  },
-  {
-    id: 3,
-    title: 'Turkish History',
-    category: 'History',
-  },
-  {
-    id: 4,
-    title: 'The Pink Chicken',
-    category: 'Kids',
-  },
-  {
-    id: 5,
-    title: 'Napoleon',
-    category: 'History',
-  },
-];
+import { mockBooks } from '../constants';
 
-export default (state = mock, action) => {
+export default (state = mockBooks, action) => {
   switch (action.type) {
     case 'ADD_BOOK':
       return [...state, action.book];
@@ -35,4 +9,9 @@ export default (state = mock, action) => {
     default:
       return state;
   }
-}
+};
+
+export const getBooks = (books, filter) => {
+  if (filter === 'All') return books;
+  return books.filter(book => book.category === filter);
+};
