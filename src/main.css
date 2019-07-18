@@ -5,7 +5,7 @@ body {
 }
 
 .container {
-  max-width: 1300px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -130,7 +130,7 @@ body {
 }
 
 .book .right div:last-child {
-  margin: 0 100px;
+  margin: 0 60px;
 }
 
 /* BOOK FORM */
@@ -159,11 +159,11 @@ body {
 }
 
 .book-form input {
-  width: 500px;
+  width: 400px;
 }
 
 .book-form select {
-  width: 400px;
+  width: 300px;
 }
 
 .btn {
