@@ -4,19 +4,12 @@ import { connect } from 'react-redux';
 import Book from '../components/Book';
 import CategoryFilter from './CategoryFilter';
 import { removeBook } from '../actions';
-import { getBooks } from '../reducers/book';
+import { getBooks } from '../helpers';
 
 const BookList = ({ books, removeBook }) => (
-  <div>
+  <div className="book-list">
     <CategoryFilter />
     <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>TITLE</th>
-          <th>CATEGORY</th>
-        </tr>
-      </thead>
       <tbody>
         {books.map(book => (
           <Book
@@ -24,6 +17,7 @@ const BookList = ({ books, removeBook }) => (
             id={book.id}
             title={book.title}
             category={book.category}
+            percentage={book.percentage}
             removeBook={removeBook}
           />
         ))}

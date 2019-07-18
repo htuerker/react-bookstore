@@ -5,9 +5,12 @@ import { filters } from '../constants';
 import { changeFilter } from '../actions';
 
 const CategoryFilter = ({ current, changeFilter }) => (
-  <select value={current} onChange={event => changeFilter(event.target.value)}>
-    {filters.map(filter => <option key={filter} value={filter}>{filter}</option>)}
-  </select>
+  <div>
+    <span>Category Filter: </span>
+    <select value={current} onChange={event => changeFilter(event.target.value)}>
+      {filters.map(filter => <option key={filter} value={filter}>{filter}</option>)}
+    </select>
+  </div>
 );
 
 CategoryFilter.propTypes = {
