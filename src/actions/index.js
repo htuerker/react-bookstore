@@ -1,10 +1,4 @@
-import uuid from 'uuid';
+import bookActions from './book';
+import filterActions from './filter';
 
-export const addBook = book => {
-  book.id = uuid();
-  return { type: 'ADD_BOOK', book };
-};
-
-export const removeBook = id => ({ type: 'REMOVE_BOOK', id });
-
-export const changeFilter = filter => ({ type: 'CHANGE_FILTER', filter });
+export { bookActions, filterActions };

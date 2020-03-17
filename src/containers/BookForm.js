@@ -1,42 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { addBook } from '../actions';
+import PropTypes from 'prop-types';
+
+import { bookActions } from '../actions';
 import { categories } from '../constants';
 
-class BookForm extends React.Component {
-  state = {
-    title: '',
-    category: '',
-  }
+const BookForm = ({ addBook }) => {
+  const [title, setTitle] = useState('');
+  const [category, setCategory] = useState('');
 
-  submitBook = (event) => {
+  const submitBook = (event) => {
     event.preventDefault();
-    const book = this.state;
-    this.props.addBook(book);
-    this.setState({
-      title: '',
-    })
-  }
-
-  handleChange = event => this.setState({
-    [event.target.name]: event.target.value,
-  })
-
-  render() {
-    return (
-      <div className='book-form'>
-        <h1>ADD NEW BOOK</h1>
-        <div>
-          <input name='title' value={this.state.title} onChange={this.handleChange} placeholder='Book title' />
-          <select name='category' onChange={this.handleChange} value={this.state.category} >
-            <option value='' disabled>Category</option>
-            {categories.map((category) => <option key={category} value={category}>{category}</option>)}
-          </select>
-          <div className='btn' onClick={this.submitBook}>ADD BOOK</div>
-        </div>
-        </div>
-    );
-  }
+    addBook({ title, category });
+    setTitle('');
+    setCategory('');
+  };
+  return (
+    <div className="book-form">
+      <h1>ADD NEW BOOK</h1>
+      <form onSubmit={e => submitBook(e)}>
+        <input
+          name="title"
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+          placeholder="Book title"
+        />
+        <select
+          name="category"
+          onChange={e => setCategory(e.target.value)}
+          value={category}
+        >
+          <option value="" disabled>Category</option>
+          {categories.map(c => <option key={c} value={c}>{c}</option>)}
+        </select>
+        <button type="submit" className="btn">ADD BOOK</button>
+      </form>
+    </div>
+  );
 };
 
-export default connect(null, { addBook })(BookForm);
+BookForm.propTypes = {
+  addBook: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = null;
+const mapDispatchToProps = { addBook: bookActions.addBook };
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookForm);

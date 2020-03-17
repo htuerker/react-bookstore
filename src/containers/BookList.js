@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Book from '../components/Book';
-import CategoryFilter from './CategoryFilter';
-import { removeBook } from '../actions';
-import { getBooks } from '../helpers';
 
+import Book from '../components/Book';
+
+import CategoryFilter from './CategoryFilter';
+import { bookActions } from '../actions';
+import { bookHelper } from '../helpers';
+
+// eslint-disable-next-line no-shadow
 const BookList = ({ books, removeBook }) => (
   <div className="book-list">
     <CategoryFilter />
@@ -35,6 +38,7 @@ BookList.propTypes = {
   removeBook: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({ books: getBooks(state.books, state.filter) });
+const mapStateToProps = state => ({ books: bookHelper.filterBooks(state.books, state.filter) });
+const mapDispatchToProps = { removeBook: bookActions.removeBook }
 
-export default connect(mapStateToProps, { removeBook })(BookList);
+export default connect(mapStateToProps, mapDispatchToProps)(BookList);

@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import { filters } from '../constants';
-import { changeFilter } from '../actions';
+import { filterActions } from '../actions';
 
 const CategoryFilter = ({ current, changeFilter }) => (
   <div>
@@ -19,5 +20,6 @@ CategoryFilter.propTypes = {
 };
 
 const mapStateToProps = state => ({ current: state.filter });
+const mapDispatchToProps = { changeFilter: filterActions.changeFilter }
 
-export default connect(mapStateToProps, { changeFilter })(CategoryFilter);
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryFilter);

@@ -1,15 +1,20 @@
 import React from 'react';
-import BookList from '../containers/BookList';
-import BookForm from '../containers/BookForm';
-import Navbar from './Navbar';
+
+import { Route, Router } from 'react-router-dom';
+import { historyHelper } from '../helpers';
+
+import HomePage from '../pages/HomePage';
+import LoginPage from '../pages/LoginPage';
+import PrivateRoute from './PrivateRoute';
 
 const App = () => (
   <div>
-    <Navbar />
-    <div className='container'>
-      <BookList />
-      <BookForm />
-    </div>
+    <Router history={historyHelper.history}>
+      <div>
+        <PrivateRoute exact path="/" component={HomePage} />
+        <Route path="/login" component={LoginPage} />
+      </div>
+    </Router>
   </div>
 );
 
